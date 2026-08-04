@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ganet social — Organización comercial y mitos financieros desmentidos</title>
+<meta name="description" content="ganet social es un portal educativo sobre administración, orden de caja y organización operativa para pequeños comerciantes independientes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "ganet social",
+  "url": "https://www.ganetsocial.blog",
+  "description": "Portal independiente de divulgación educativa sobre administración, orden de caja y organización operativa para pequeños comerciantes.",
+  "author": {
+    "@type": "Person",
+    "name": "Jhon Jairo Castillo Socarraz"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ganet social",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Esquina de La Torre, Avenida Norte, Bulevar Panteón",
+      "addressLocality": "Barquisimeto",
+      "postalCode": "1010",
+      "addressCountry": "VE"
+    }
+  }
+}
+</script>
+<style>
+  :root{
+    --bg:#14171A;
+    --bg-deep:#0E1012;
+    --panel:#1B1F22;
+    --panel-soft:#202427;
+    --ivory:#EDE9DD;
+    --ivory-70: rgba(237,233,221,.72);
+    --ivory-45: rgba(237,233,221,.45);
+    --gold:#C6A25B;
+    --gold-soft: rgba(198,162,91,.16);
+    --emerald:#3C6B57;
+    --line: rgba(237,233,221,.10);
+    --line-strong: rgba(198,162,91,.28);
+    --radius:3px;
+    --max:1220px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ivory);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Cormorant Garamond', serif;
+    color:var(--ivory);
+    margin:0 0 .4em 0;
+    line-height:1.15;
+    font-weight:600;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg.art{display:block;width:100%;height:auto;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+  /* signature: brass ledger-thread divider */
+  .thread{
+    position:relative;height:1px;background:var(--line);margin:0 auto;
+  }
+  .thread::before{
+    content:"";position:absolute;left:50%;top:-3px;transform:translateX(-50%);
+    width:7px;height:7px;border-radius:50%;background:var(--gold);
+  }
+  .thread.quiet::before{opacity:.55;width:5px;height:5px;}
+
+  /* header */
+  header{
+    position:sticky;top:0;z-index:40;
+    background:rgba(20,23,26,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 28px;max-width:var(--max);margin:0 auto;
+  }
+  .brand{
+    display:flex;align-items:baseline;gap:10px;
+    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.5rem;
+    letter-spacing:.01em;color:var(--ivory);
+  }
+  .brand em{color:var(--gold);font-style:italic;}
+  .brand small{
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:.6rem;
+    text-transform:uppercase;letter-spacing:.2em;color:var(--ivory-45);
+  }
+  nav.links{display:flex;align-items:center;gap:38px;}
+  nav.links a{
+    font-size:.8rem;font-weight:500;color:var(--ivory-70);
+    letter-spacing:.02em;padding:4px 0;
+  }
+  nav.links a:hover{color:var(--gold);}
+  .nav-cta{
+    background:transparent;color:var(--gold);
+    padding:11px 24px;border-radius:var(--radius);
+    font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    border:1px solid var(--line-strong);cursor:pointer;
+  }
+  .nav-cta:hover{background:var(--gold-soft);}
+  .burger{display:none;background:none;border:none;font-size:1.6rem;color:var(--ivory);cursor:pointer;}
+
+  /* hero */
+  .hero{padding:110px 0 80px;position:relative;overflow:hidden;}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(600px 340px at 82% 8%, var(--gold-soft), transparent 70%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative;display:grid;grid-template-columns:1.3fr .9fr;gap:64px;align-items:start;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:12px;
+    font-size:.7rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:30px;height:1px;background:var(--gold);display:inline-block;}
+  h1.headline{
+    font-size:clamp(2.6rem,5vw,4.1rem);
+    font-weight:600;letter-spacing:-.005em;color:var(--ivory);
+  }
+  h1.headline em{font-style:italic;color:var(--gold);font-weight:500;}
+  .sub{
+    margin-top:22px;max-width:54ch;font-size:1.12rem;color:var(--ivory-70);
+    font-weight:400;
+  }
+  .hero-actions{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--gold);color:var(--bg-deep);
+    padding:15px 30px;border-radius:var(--radius);
+    font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;
+    border:1px solid var(--gold);cursor:pointer;
+  }
+  .btn-primary:hover{background:#D8B872;}
+  .btn-ghost{
+    background:transparent;color:var(--ivory);
+    padding:15px 28px;border-radius:var(--radius);
+    font-weight:600;font-size:.82rem;letter-spacing:.04em;
+    border:1px solid var(--line-strong);cursor:pointer;
+  }
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+  .author-card{
+    background:linear-gradient(165deg, var(--panel), var(--panel-soft));
+    border:1px solid var(--line-strong);
+    border-radius:var(--radius);
+    padding:34px;position:relative;
+  }
+  .author-card .kicker{
+    font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;
+    color:var(--gold);margin-bottom:20px;
+  }
+  .avatar{
+    width:60px;height:60px;border-radius:50%;
+    background:transparent;color:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.4rem;
+    margin-bottom:18px;border:1px solid var(--line-strong);
+  }
+  .author-card h3{font-size:1.35rem;margin-bottom:2px;}
+  .author-role{font-size:.82rem;color:var(--ivory-45);margin-bottom:16px;letter-spacing:.02em;}
+  .author-bio{font-size:.92rem;color:var(--ivory-70);}
+  .author-stats{
+    display:grid;grid-template-columns:1fr 1fr;gap:16px;
+    margin-top:24px;padding-top:24px;border-top:1px solid var(--line);
+  }
+  .author-stats div b{
+    display:block;font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold);font-weight:600;
+  }
+  .author-stats div span{font-size:.68rem;color:var(--ivory-45);text-transform:uppercase;letter-spacing:.08em;}
+
+  section{padding:96px 0;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-bottom:52px;flex-wrap:wrap;gap:20px;
+  }
+  .section-head h2{font-size:clamp(2rem,3.4vw,2.7rem);}
+  .section-head p{color:var(--ivory-45);max-width:44ch;margin:0;font-size:.95rem;}
+
+  /* ---- premium article cards with crisp vector art (4K-scalable) ---- */
+  .grid-articles{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+  }
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover{
+    border-color:var(--line-strong);
+    transform:translateY(-6px);
+    box-shadow:0 28px 60px -20px rgba(0,0,0,.55);
+  }
+  .card-art{
+    aspect-ratio:16/11;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(198,162,91,.14), transparent 55%),
+      linear-gradient(160deg, #1D2226, #14171A);
+    position:relative;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .card-art svg{position:absolute;inset:0;width:100%;height:100%;}
+  .card-body{padding:30px 30px 28px;display:flex;flex-direction:column;flex-grow:1;}
+  .badge{
+    display:inline-block;
+    font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:16px;
+  }
+  .card h3{font-size:1.4rem;margin-bottom:12px;font-weight:600;}
+  .card p.excerpt{font-size:.92rem;color:var(--ivory-45);flex-grow:1;margin-bottom:22px;}
+  .card-meta{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:.72rem;color:var(--ivory-45);letter-spacing:.02em;
+    border-top:1px solid var(--line);padding-top:16px;margin-bottom:16px;
+  }
+  .read-link{
+    font-size:.82rem;font-weight:700;color:var(--gold);
+    display:inline-flex;align-items:center;gap:8px;
+    background:none;border:none;cursor:pointer;padding:0;
+    font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:.02em;
+  }
+  .read-link:hover{gap:12px;}
+  .read-link::after{content:"—›";transition:margin .2s ease;}
+
+  /* about / author */
+  .about-grid{
+    display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center;
+  }
+  .about-panel{
+    background:linear-gradient(165deg,#1D2226,#14171A);
+    border:1px solid var(--line-strong);
+    border-radius:var(--radius);
+    padding:44px;
+  }
+  .about-panel .avatar{border-color:var(--gold);width:74px;height:74px;font-size:1.6rem;}
+  .about-panel h3{font-size:1.55rem;}
+  .about-panel .author-role{color:var(--ivory-45);}
+  .about-panel p{color:var(--ivory-70);font-size:.96rem;}
+  .about-copy p{color:var(--ivory-70);margin-bottom:18px;font-size:1rem;}
+  .credential-list{list-style:none;padding:0;margin:28px 0 0;}
+  .credential-list li{
+    display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line);
+    font-size:.94rem;color:var(--ivory-70);
+  }
+  .credential-list li b{
+    color:var(--gold);font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.2rem;min-width:28px;
+  }
+
+  /* contact */
+  .contact-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  }
+  .contact-item{background:var(--panel);padding:36px;}
+  .contact-item .kicker{
+    font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+    color:var(--gold);margin-bottom:12px;
+  }
+  .contact-item p{margin:0;font-size:.98rem;color:var(--ivory);}
+  .contact-item a{font-weight:600;color:var(--gold);}
+
+  /* footer */
+  footer{
+    background:var(--bg-deep);color:var(--ivory-70);
+    padding:72px 0 30px;border-top:1px solid var(--line);
+  }
+  .footer-grid{
+    display:grid;grid-template-columns:1.2fr 1fr 1.1fr;gap:52px;
+    padding-bottom:44px;border-bottom:1px solid var(--line);
+  }
+  .footer-grid h4{
+    color:var(--gold);font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:.68rem;text-transform:uppercase;letter-spacing:.16em;font-weight:700;
+    margin-bottom:20px;
+  }
+  footer p{font-size:.9rem;color:var(--ivory-45);line-height:1.75;}
+  .footer-links{list-style:none;padding:0;margin:0;}
+  .footer-links li{margin-bottom:14px;}
+  .footer-links button{
+    background:none;border:none;color:var(--ivory-70);font-size:.9rem;cursor:pointer;
+    padding:0;font-family:'Plus Jakarta Sans',sans-serif;
+  }
+  .footer-links button:hover{color:var(--gold);text-decoration:underline;}
+  .footer-contact{list-style:none;padding:0;margin:0;}
+  .footer-contact li{margin-bottom:12px;font-size:.9rem;color:var(--ivory-45);}
+  .institutional{
+    padding-top:32px;font-size:.85rem;color:var(--ivory-45);max-width:80ch;
+  }
+  .copyright{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    margin-top:26px;font-size:.78rem;color:rgba(237,233,221,.3);
+  }
+
+  /* cookie banner */
+  .cookie-banner{
+    position:fixed;left:28px;right:28px;bottom:28px;z-index:80;
+    max-width:660px;margin:0 auto;
+    background:linear-gradient(165deg,#1D2226,#14171A);
+    border:1px solid var(--line-strong);
+    border-radius:var(--radius);
+    padding:24px 26px;
+    box-shadow:0 30px 70px -20px rgba(0,0,0,.6);
+    display:flex;gap:20px;align-items:center;flex-wrap:wrap;
+    transform:translateY(140%);transition:transform .4s ease;
+  }
+  .cookie-banner.show{transform:translateY(0);}
+  .cookie-banner p{font-size:.86rem;color:var(--ivory-70);margin:0;flex:1;min-width:220px;}
+  .cookie-actions{display:flex;gap:10px;}
+  .btn-sm{padding:10px 18px;border-radius:var(--radius);font-size:.78rem;font-weight:700;cursor:pointer;letter-spacing:.03em;}
+  .btn-sm.accept{background:var(--gold);color:var(--bg-deep);border:1px solid var(--gold);}
+  .btn-sm.configure{background:transparent;color:var(--ivory-70);border:1px solid var(--line-strong);}
+
+  /* modals */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(8,9,10,.72);
+    display:none;align-items:flex-start;justify-content:center;
+    padding:64px 20px;z-index:100;overflow-y:auto;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--panel);max-width:740px;width:100%;
+    border-radius:var(--radius);border:1px solid var(--line-strong);
+    padding:48px;position:relative;
+    box-shadow:0 50px 100px -30px rgba(0,0,0,.7);
+  }
+  .modal-close{
+    position:absolute;top:22px;right:22px;
+    background:none;border:1px solid var(--line-strong);border-radius:50%;
+    width:36px;height:36px;font-size:1rem;cursor:pointer;color:var(--ivory-45);
+  }
+  .modal-close:hover{border-color:var(--gold);color:var(--gold);}
+  .modal .badge{margin-bottom:18px;}
+  .modal h2{font-size:1.9rem;margin-bottom:8px;}
+  .modal .card-meta{border-top:none;padding-top:0;margin-bottom:28px;}
+  .modal .body p{color:var(--ivory-70);margin-bottom:18px;font-size:1rem;}
+  .modal .body h4{font-size:1.05rem;margin-top:26px;color:var(--gold);font-family:'Cormorant Garamond',serif;font-weight:600;}
+  .legal-modal h2{font-size:1.6rem;}
+  .legal-modal .body p{font-size:.92rem;}
+  .legal-modal .body h4{font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;font-family:'Plus Jakarta Sans',sans-serif;}
+
+  @media (max-width:920px){
+    nav.links{display:none;}
+    .burger{display:block;}
+    .hero-grid,.about-grid{grid-template-columns:1fr;}
+    .grid-articles{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr;gap:36px;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:600px){
+    .grid-articles{grid-template-columns:1fr;}
+    .nav-cta{display:none;}
+    .modal{padding:30px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#inicio" class="brand">ganet <em>social</em></a>
+    <nav class="links">
+      <a href="#inicio">Inicio</a>
+      <a href="#articulos">Artículos</a>
+      <a href="#autor">Sobre el autor</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <button class="nav-cta" onclick="document.getElementById('articulos').scrollIntoView({behavior:'smooth'})">Ver artículos</button>
+    <button class="burger" onclick="document.querySelector('nav.links').style.display = document.querySelector('nav.links').style.display==='flex'?'none':'flex'">☰</button>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Mitos financieros desmentidos</span>
+        <h1 class="headline">Ordenar la caja de un comercio <em>no es cuestión de suerte</em>, es método.</h1>
+        <p class="sub">ganet social explica, con lenguaje sencillo, cómo administrar un negocio pequeño: registro de ingresos, control de inventario y organización operativa, desmontando las creencias que más confunden a los comerciantes independientes.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="document.getElementById('articulos').scrollIntoView({behavior:'smooth'})">Explorar artículos</button>
+          <button class="btn-ghost" onclick="document.getElementById('autor').scrollIntoView({behavior:'smooth'})">Sobre el autor</button>
+        </div>
+      </div>
+      <div class="author-card">
+        <div class="kicker">Autor de ganet social</div>
+        <div class="avatar">JC</div>
+        <h3>Jhon Jairo Castillo Socarraz</h3>
+        <div class="author-role">Redactor especializado en organización comercial</div>
+        <p class="author-bio">Escribe sobre administración y orden operativo para comerciantes independientes, con especial atención a los hábitos de registro que marcan la diferencia entre un negocio ordenado y uno improvisado.</p>
+        <div class="author-stats">
+          <div><b>6</b><span>Artículos publicados</span></div>
+          <div><b>100%</b><span>Contenido divulgativo</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="thread"></div></div>
+
+  <section id="articulos">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Mitos que confunden a los comerciantes</h2>
+          <p>Seis creencias comunes sobre la administración de un negocio pequeño, explicadas con claridad.</p>
+        </div>
+      </div>
+      <div class="grid-articles" id="article-grid"></div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="thread quiet"></div></div>
+
+  <section id="autor">
+    <div class="wrap about-grid">
+      <div class="about-panel">
+        <div class="avatar">JC</div>
+        <h3>Jhon Jairo Castillo Socarraz</h3>
+        <div class="author-role">Autor · ganet social</div>
+        <p>Con sede en Barquisimeto, Jhon Jairo escribe para comerciantes que buscan entender mejor cómo ordenar su negocio día a día, sin tecnicismos innecesarios.</p>
+      </div>
+      <div class="about-copy">
+        <h2>Sobre ganet social</h2>
+        <p>ganet social nació para responder una pregunta simple: ¿por qué tantos comercios pequeños funcionan bien en el día a día pero pierden el control al final del mes? La respuesta casi siempre está en los hábitos de registro y organización, no en la falta de esfuerzo.</p>
+        <p>Cada artículo del blog desmonta una creencia extendida entre comerciantes independientes y propone, en su lugar, una práctica concreta de gestión de inventario, registro de ingresos u organización del comercio.</p>
+        <ul class="credential-list">
+          <li><b>01</b> Contenido revisado antes de publicación, con foco en claridad y utilidad práctica.</li>
+          <li><b>02</b> Enfoque exclusivamente educativo: no se ofrecen productos, créditos ni asesorías personalizadas.</li>
+          <li><b>03</b> Ejemplos basados en situaciones reales de comercios pequeños e independientes.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="thread quiet"></div></div>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Contacto</h2>
+          <p>ganet social es un portal de divulgación. No se gestionan solicitudes de crédito ni asesoría financiera personalizada por este medio.</p>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="kicker">Correo</div>
+          <p><a href="mailto:soporte@ganetsocial.blog">soporte@ganetsocial.blog</a></p>
+        </div>
+        <div class="contact-item">
+          <div class="kicker">Teléfono</div>
+          <p><a href="tel:+582127630325">+58 212-7630325</a></p>
+        </div>
+        <div class="contact-item">
+          <div class="kicker">Dirección</div>
+          <p>Esquina de La Torre, Avenida Norte, Bulevar Panteón, Barquisimeto 1010, Venezuela</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#inicio" class="brand">ganet <em>social</em></a>
+        <p style="margin-top:16px;">Portal independiente dedicado a la divulgación de contenidos sobre administración, orden de caja y organización operativa para pequeños comerciantes.</p>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul class="footer-links">
+          <li><button onclick="openModal('modal-privacidad')">Política de Privacidad</button></li>
+          <li><button onclick="openModal('modal-terminos')">Términos y Condiciones</button></li>
+          <li><button onclick="openModal('modal-aviso')">Aviso Legal</button></li>
+          <li><button onclick="openModal('modal-cookies')">Política de Cookies</button></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="footer-contact">
+          <li>Jhon Jairo Castillo Socarraz</li>
+          <li>Esquina de La Torre, Avenida Norte, Bulevar Panteón, Barquisimeto 1010, Venezuela</li>
+          <li><a href="mailto:soporte@ganetsocial.blog" style="color:var(--ivory-70);">soporte@ganetsocial.blog</a></li>
+          <li><a href="tel:+582127630325" style="color:var(--ivory-70);">+58 212-7630325</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="institutional">ganet social es un portal web independiente dedicado a la divulgación de contenidos educativos e informativos sobre administración, orden de caja y organización operativa para pequeños comerciantes independientes. Todos los artículos son de carácter divulgativo.</p>
+    <div class="copyright">
+      <span>© <span id="year"></span> ganet social. Todos los derechos reservados.</span>
+      <span>www.ganetsocial.blog</span>
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>Usamos cookies propias y de terceros para mejorar tu experiencia de lectura y analizar el uso del sitio. Puedes aceptarlas o configurarlas.</p>
+  <div class="cookie-actions">
+    <button class="btn-sm configure" onclick="openModal('modal-cookies')">Configurar</button>
+    <button class="btn-sm accept" onclick="acceptCookies()">Aceptar</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-article">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-article')">✕</button>
+    <div id="article-content"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-privacidad">
+  <div class="modal legal-modal">
+    <button class="modal-close" onclick="closeModal('modal-privacidad')">✕</button>
+    <h2>Política de Privacidad</h2>
+    <div class="body">
+      <p>ganet social respeta la privacidad de quienes visitan este sitio. Esta página describe, de forma general, qué información se recopila y con qué fin.</p>
+      <h4>Información que recopilamos</h4>
+      <p>El sitio puede recopilar datos técnicos básicos de navegación (tipo de dispositivo, páginas visitadas, tiempo de permanencia) a través de herramientas de analítica y publicidad estándar del sector.</p>
+      <h4>Uso de la información</h4>
+      <p>Esta información se utiliza únicamente para mejorar la experiencia de lectura del sitio y comprender qué contenidos resultan más útiles para los comerciantes que nos visitan.</p>
+      <h4>Contacto de quien visita el sitio</h4>
+      <p>Si una persona escribe a soporte@ganetsocial.blog, su correo se usa exclusivamente para responder esa consulta y no se comparte con terceros.</p>
+      <h4>Contacto</h4>
+      <p>Para dudas sobre esta política, puede escribir a soporte@ganetsocial.blog.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-terminos">
+  <div class="modal legal-modal">
+    <button class="modal-close" onclick="closeModal('modal-terminos')">✕</button>
+    <h2>Términos y Condiciones</h2>
+    <div class="body">
+      <p>Al utilizar www.ganetsocial.blog, la persona visitante acepta los siguientes términos generales de uso.</p>
+      <h4>Naturaleza del sitio</h4>
+      <p>ganet social es un blog de carácter educativo e informativo. Los contenidos publicados no constituyen asesoría profesional individualizada y se ofrecen con fines de divulgación general.</p>
+      <h4>Uso del contenido</h4>
+      <p>Los artículos pueden compartirse citando la fuente. No está permitida su reproducción total con fines comerciales sin autorización previa.</p>
+      <h4>Responsabilidad</h4>
+      <p>Cada lector es responsable de evaluar cómo aplica la información divulgada a la situación particular de su comercio.</p>
+      <h4>Modificaciones</h4>
+      <p>Estos términos pueden actualizarse periódicamente para reflejar cambios en el sitio o en la normativa aplicable.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-aviso">
+  <div class="modal legal-modal">
+    <button class="modal-close" onclick="closeModal('modal-aviso')">✕</button>
+    <h2>Aviso Legal</h2>
+    <div class="body">
+      <p>En cumplimiento del deber de transparencia, se informa lo siguiente sobre la titularidad de este sitio web.</p>
+      <h4>Titular del sitio</h4>
+      <p>Jhon Jairo Castillo Socarraz, con domicilio en Esquina de La Torre, Avenida Norte, Bulevar Panteón, Barquisimeto 1010, Venezuela.</p>
+      <h4>Contacto</h4>
+      <p>Correo electrónico: soporte@ganetsocial.blog · Teléfono: +58 212-7630325.</p>
+      <h4>Finalidad del sitio</h4>
+      <p>Publicación de contenidos educativos sobre administración, orden de caja y organización operativa para pequeños comerciantes. El sitio no presta servicios financieros, crediticios ni de inversión.</p>
+      <h4>Propiedad intelectual</h4>
+      <p>Los textos, gráficos y demás elementos del sitio pertenecen a ganet social salvo que se indique lo contrario.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-cookies">
+  <div class="modal legal-modal">
+    <button class="modal-close" onclick="closeModal('modal-cookies')">✕</button>
+    <h2>Política de Cookies</h2>
+    <div class="body">
+      <p>Este sitio utiliza cookies propias y de terceros para fines de funcionamiento, analítica y publicidad.</p>
+      <h4>Cookies necesarias</h4>
+      <p>Permiten el funcionamiento básico del sitio, como recordar tu preferencia sobre este aviso de cookies.</p>
+      <h4>Cookies de analítica</h4>
+      <p>Ayudan a entender cómo se navega el sitio, con el fin de mejorar la organización y el contenido de los artículos.</p>
+      <h4>Cookies de publicidad</h4>
+      <p>Pueden utilizarse para mostrar anuncios relevantes a través de plataformas publicitarias externas.</p>
+      <h4>Gestión de preferencias</h4>
+      <p>Puedes aceptar todas las cookies o continuar la navegación sin aceptarlas; en ese caso, solo se utilizarán las cookies necesarias.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Crisp vector line-art per category — scales perfectly at any resolution */
+const artByCategory = {
+  "Registro de ingresos": `
+    <svg viewBox="0 0 400 275" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <rect x="120" y="40" width="160" height="200" rx="4" stroke="#C6A25B" stroke-width="1.4" opacity="0.9"/>
+      <line x1="140" y1="80" x2="260" y2="80" stroke="#C6A25B" stroke-width="1.1" opacity="0.55"/>
+      <line x1="140" y1="105" x2="260" y2="105" stroke="#C6A25B" stroke-width="1.1" opacity="0.55"/>
+      <line x1="140" y1="130" x2="230" y2="130" stroke="#C6A25B" stroke-width="1.1" opacity="0.55"/>
+      <line x1="140" y1="155" x2="260" y2="155" stroke="#C6A25B" stroke-width="1.1" opacity="0.35"/>
+      <line x1="140" y1="180" x2="240" y2="180" stroke="#C6A25B" stroke-width="1.1" opacity="0.35"/>
+      <circle cx="255" cy="205" r="20" stroke="#C6A25B" stroke-width="1.4" opacity="0.85"/>
+      <path d="M247 205 L253 211 L264 197" stroke="#C6A25B" stroke-width="1.6" opacity="0.9"/>
+    </svg>
+  `,
+  "Gestión de inventario": `
+    <svg viewBox="0 0 400 275" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <rect x="100" y="150" width="60" height="60" stroke="#C6A25B" stroke-width="1.3" opacity="0.75"/>
+      <rect x="170" y="120" width="60" height="90" stroke="#C6A25B" stroke-width="1.3" opacity="0.9"/>
+      <rect x="240" y="90" width="60" height="120" stroke="#C6A25B" stroke-width="1.3" opacity="0.6"/>
+      <line x1="100" y1="180" x2="160" y2="180" stroke="#C6A25B" stroke-width="1" opacity="0.4"/>
+      <line x1="170" y1="150" x2="230" y2="150" stroke="#C6A25B" stroke-width="1" opacity="0.45"/>
+      <line x1="240" y1="130" x2="300" y2="130" stroke="#C6A25B" stroke-width="1" opacity="0.35"/>
+      <line x1="90" y1="215" x2="310" y2="215" stroke="#C6A25B" stroke-width="1.2" opacity="0.5"/>
+    </svg>
+  `,
+  "Organización del comercio": `
+    <svg viewBox="0 0 400 275" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <rect x="90" y="70" width="220" height="145" rx="3" stroke="#C6A25B" stroke-width="1.3" opacity="0.55"/>
+      <line x1="90" y1="115" x2="310" y2="115" stroke="#C6A25B" stroke-width="1" opacity="0.4"/>
+      <line x1="90" y1="160" x2="310" y2="160" stroke="#C6A25B" stroke-width="1" opacity="0.4"/>
+      <line x1="163" y1="70" x2="163" y2="215" stroke="#C6A25B" stroke-width="1" opacity="0.4"/>
+      <line x1="237" y1="70" x2="237" y2="215" stroke="#C6A25B" stroke-width="1" opacity="0.4"/>
+      <circle cx="126" cy="92" r="4" stroke="#C6A25B" stroke-width="1.2" opacity="0.85"/>
+      <circle cx="200" cy="137" r="4" stroke="#C6A25B" stroke-width="1.2" opacity="0.85"/>
+      <circle cx="274" cy="182" r="4" stroke="#C6A25B" stroke-width="1.2" opacity="0.85"/>
+    </svg>
+  `
+};
+
+const articles = [
+  {
+    id: "a1",
+    badge: "Registro de ingresos",
+    title: "Llevar la caja \"de memoria\" es más rápido que anotarla",
+    excerpt: "Muchos comerciantes confían en recordar cada venta del día. La experiencia muestra que esa confianza tiene un costo silencioso.",
+    date: "3 jul 2026",
+    author: "Jhon Jairo Castillo",
+    body: `
+      <p>Es común escuchar que anotar cada venta "quita tiempo" y que la memoria es suficiente para llevar el control de un negocio pequeño. Sin embargo, cuando se compara el ritmo real de un comercio con lo que una persona puede retener durante un día completo de atención al público, la diferencia se hace evidente.</p>
+      <p>Una venta fiada, un cambio entregado de más, una compra de insumos pagada en efectivo: cada uno de estos movimientos ocupa un lugar en la memoria que, al final del día, ya está ocupada por decenas de interacciones distintas. El resultado no suele ser un error grande y visible, sino pequeñas diferencias que se acumulan mes a mes.</p>
+      <h4>Qué proponer en su lugar</h4>
+      <p>Un registro breve, incluso en un cuaderno físico, tomado en el momento de cada movimiento, reduce esa carga. No se trata de llevar una contabilidad compleja, sino de anotar monto, concepto y hora de cada ingreso o egreso relevante, algo que toma segundos y evita reconstruir el día completo de memoria por la noche.</p>
+    `
+  },
+  {
+    id: "a2",
+    badge: "Gestión de inventario",
+    title: "Solo los negocios grandes necesitan organizar su inventario",
+    excerpt: "La idea de que el inventario ordenado es cosa de cadenas y franquicias deja a muchos comercios pequeños expuestos a pérdidas invisibles.",
+    date: "10 jul 2026",
+    author: "Jhon Jairo Castillo",
+    body: `
+      <p>Existe la creencia de que llevar un inventario detallado solo tiene sentido cuando el volumen de productos es enorme. En comercios pequeños, muchas veces se asume que "se conoce" el stock con solo mirar los estantes.</p>
+      <p>Ese conocimiento visual funciona mientras el catálogo es reducido, pero incluso en negocios con pocas referencias, la falta de un registro escrito dificulta identificar cuándo un producto realmente deja de rotar, cuándo conviene reponerlo y cuánto representa ese producto dentro del total de mercancía disponible.</p>
+      <h4>Qué proponer en su lugar</h4>
+      <p>Un listado simple, actualizado cada semana, con cantidad disponible por producto, es suficiente para la mayoría de comercios pequeños. No requiere sistemas complejos: una hoja física o un cuaderno dedicado exclusivamente a esto ya marca una diferencia notable en la organización del negocio.</p>
+    `
+  },
+  {
+    id: "a3",
+    badge: "Organización del comercio",
+    title: "Mezclar el dinero del negocio con el personal no afecta la administración",
+    excerpt: "Separar las finanzas del comercio de los gastos del hogar parece un detalle menor, pero suele ser el origen de la confusión contable más común.",
+    date: "17 jul 2026",
+    author: "Jhon Jairo Castillo",
+    body: `
+      <p>En comercios familiares o de un solo dueño, es frecuente que el dinero de las ventas y el dinero para gastos personales convivan en la misma caja o en el mismo bolsillo. Se asume que, como es la misma persona quien administra ambos, no hay necesidad real de separarlos.</p>
+      <p>El problema aparece al intentar responder preguntas simples: ¿cuánto ganó realmente el negocio este mes? ¿Ese gasto fue del comercio o del hogar? Sin una separación clara, estas preguntas quedan sin respuesta precisa, y las decisiones sobre el negocio terminan basándose en percepciones y no en datos.</p>
+      <h4>Qué proponer en su lugar</h4>
+      <p>Definir un espacio físico exclusivo para el dinero del comercio, por mínimo que sea el negocio, y registrar cualquier retiro para uso personal como un movimiento aparte, permite ver con claridad el estado real de la operación comercial.</p>
+    `
+  },
+  {
+    id: "a4",
+    badge: "Registro de ingresos",
+    title: "Anotar los gastos pequeños es una pérdida de tiempo",
+    excerpt: "Los gastos menores suelen descartarse del registro por parecer insignificantes, pero en conjunto pueden representar una parte considerable del mes.",
+    date: "22 jul 2026",
+    author: "Jhon Jairo Castillo",
+    body: `
+      <p>Un empaque adicional, una bolsa, un pequeño arreglo, una propina al repartidor: son gastos que, individualmente, parecen demasiado pequeños como para anotarlos. Con frecuencia se descartan del registro diario del negocio bajo la idea de que "no valen la pena".</p>
+      <p>Sin embargo, al sumarse a lo largo de un mes, estos gastos menores pueden representar una porción relevante de los egresos totales de un comercio pequeño, precisamente porque ocurren con mucha frecuencia y de forma dispersa.</p>
+      <h4>Qué proponer en su lugar</h4>
+      <p>Destinar una sola línea del registro diario a "gastos varios", con el total acumulado del día, es suficiente para no perder el detalle sin que esto implique anotar cada gasto de forma individual y extensa.</p>
+    `
+  },
+  {
+    id: "a5",
+    badge: "Organización del comercio",
+    title: "El orden en el comercio solo importa al final del mes",
+    excerpt: "Postergar la organización para el cierre mensual suele significar reconstruir, de memoria, semanas de movimientos difíciles de recordar con precisión.",
+    date: "27 jul 2026",
+    author: "Jhon Jairo Castillo",
+    body: `
+      <p>Es habitual dejar la organización de cuentas, comprobantes y registros para el final del mes, cuando "hay más tiempo" para sentarse a ordenar todo. En la práctica, este momento suele convertirse en un intento de reconstruir semanas completas de actividad con información incompleta.</p>
+      <p>Facturas que se traspapelaron, ventas que no quedaron claras, gastos sin comprobante: la mayoría de estos vacíos se originan porque el orden se pospuso en lugar de mantenerse al día.</p>
+      <h4>Qué proponer en su lugar</h4>
+      <p>Dedicar diez minutos al cierre de cada jornada para revisar y ordenar lo registrado ese día evita que la organización se acumule. Un negocio ordenado no es el que se pone al día una vez al mes, sino el que se mantiene al día todos los días.</p>
+    `
+  },
+  {
+    id: "a6",
+    badge: "Gestión de inventario",
+    title: "Un cuaderno cualquiera sirve igual que un sistema de registro",
+    excerpt: "No es el instrumento lo que determina el orden de un comercio, sino la estructura y la constancia con que se utiliza.",
+    date: "1 ago 2026",
+    author: "Jhon Jairo Castillo",
+    body: `
+      <p>Se suele pensar que cualquier cuaderno sirve para llevar el control de un negocio, siempre que se anote algo en él. Pero un cuaderno sin columnas definidas, sin un orden fijo de fecha, concepto y monto, termina siendo tan difícil de interpretar como no anotar nada.</p>
+      <p>La diferencia entre un registro útil y uno que se abandona a las pocas semanas no está en el instrumento físico, sino en tener una estructura simple y repetible: qué se anota, en qué orden y con qué frecuencia.</p>
+      <h4>Qué proponer en su lugar</h4>
+      <p>Definir de antemano un formato fijo, aunque sea en una libreta común, con columnas para fecha, concepto, ingreso, egreso y saldo, convierte cualquier cuaderno en una herramienta de organización real para el comercio.</p>
+    `
+  }
+];
+
+const grid = document.getElementById('article-grid');
+articles.forEach(a => {
+  const card = document.createElement('article');
+  card.className = 'card';
+  card.innerHTML = `
+    <div class="card-art">${artByCategory[a.badge]}</div>
+    <div class="card-body">
+      <span class="badge">${a.badge}</span>
+      <h3>${a.title}</h3>
+      <p class="excerpt">${a.excerpt}</p>
+      <div class="card-meta"><span>${a.date}</span><span>${a.author}</span></div>
+      <button class="read-link" data-id="${a.id}">Leer artículo completo</button>
+    </div>
+  `;
+  card.querySelector('.read-link').addEventListener('click', () => openArticle(a.id));
+  grid.appendChild(card);
+});
+
+function openArticle(id){
+  const a = articles.find(x => x.id === id);
+  if(!a) return;
+  document.getElementById('article-content').innerHTML = `
+    <span class="badge">${a.badge}</span>
+    <h2>${a.title}</h2>
+    <div class="card-meta"><span>${a.date}</span><span>Por ${a.author}</span></div>
+    <div class="body">${a.body}</div>
+  `;
+  openModal('modal-article');
+}
+
+function openModal(id){
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal-overlay').forEach(ov => {
+  ov.addEventListener('click', e => { if(e.target === ov) closeModal(ov.id); });
+});
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    document.querySelectorAll('.modal-overlay.open').forEach(ov => closeModal(ov.id));
+  }
+});
+
+(function(){
+  const banner = document.getElementById('cookieBanner');
+  const stored = localStorage.getItem('ganetsocial_cookie_consent');
+  if(!stored){
+    setTimeout(() => banner.classList.add('show'), 800);
+  }
+})();
+function acceptCookies(){
+  localStorage.setItem('ganetsocial_cookie_consent', 'accepted');
+  document.getElementById('cookieBanner').classList.remove('show');
+}
+</script>
+
+</body>
+</html>
